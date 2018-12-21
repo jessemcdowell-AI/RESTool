@@ -1,7 +1,7 @@
 import {Component, OnInit, Inject, ViewChild} from "@angular/core";
 import {ActivatedRoute, Router} from "@angular/router";
 import {ToastrService} from "toastr-ng2";
-import {Observable} from "rxjs/Rx";
+import {Observable} from "rxjs";
 import {GetComponent} from "./get/get.component";
 @Component({
   selector: 'app-main-view',
