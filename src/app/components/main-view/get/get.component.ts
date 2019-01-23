@@ -3,6 +3,7 @@ import {FormGroup, FormControl, FormBuilder} from '@angular/forms';
 import { ToastrService } from 'ngx-toastr';
 import { RequestHeaders } from '../../../services/config.model';
 import { environment } from '../../../../environments/environment';
+import { orderBy } from 'natural-orderby';
 
 @Component({
   selector: 'app-get',
@@ -89,11 +90,7 @@ export class GetComponent {
           if (typeof sortBy === 'string') {
             sortBy = [sortBy];
           }
-          this.data.sort((a, b) => {
-            const aProperty = this.dataPathUtils.extractDataFromResponse(a, null, sortBy);
-            const bProperty = this.dataPathUtils.extractDataFromResponse(b, null, sortBy);
-            return aProperty < bProperty ? -1 : aProperty > bProperty ? 1 : 0;
-          })
+          this.data = orderBy(this.data, sortBy);
         }
 
         if (environment.logApiData) {
