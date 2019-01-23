@@ -90,7 +90,7 @@ export class GetComponent {
           if (typeof sortBy === 'string') {
             sortBy = [sortBy];
           }
-          this.data = orderBy(this.data, sortBy);
+          this.data = orderBy(this.data, sortBy.map(path => (item => this.dataPathUtils.extractDataFromResponse(item, null, path))));
         }
 
         if (environment.logApiData) {
